@@ -27,11 +27,29 @@ RSAKey* Participant::getPublicKey() const
   return this->publicKey;
 }
 
+std::vector<int> Participant::encryptMessage(std::string message, const RSAKey& otherPublicKey)
+{
+  std::vector<int> ret;
+
+  for (char& c : message)
+    ret.push_back(encryptMessage((int)c, otherPublicKey));
+
+  return ret;
+}
 int Participant::encryptMessage(int message, const RSAKey& otherPublicKey)
 {
   return Math::modExp(message, otherPublicKey.getB(), otherPublicKey.getA());
 }
 
+std::string Participant::decryptMessage(const std::vector<int>& message)
+{
+  std::string ret;
+
+  for (auto c : message)
+    ret += (char)decryptMessage(c);
+
+  return ret;
+}
 int Participant::decryptMessage(int message)
 {
   return Math::modExp(message, this->privateKey->getB(), this->privateKey->getA());

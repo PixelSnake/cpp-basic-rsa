@@ -2,6 +2,8 @@
 
 #include <string>
 #include <cmath>
+#include <iostream>
+#include <vector>
 
 #include "types.h"
 #include "defines.h"
