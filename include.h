@@ -3,6 +3,9 @@
 #include <string>
 #include <cmath>
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <streambuf>
 #include <vector>
 
 #include "types.h"
